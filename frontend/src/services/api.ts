@@ -6,6 +6,8 @@ import {
   getSavedTrips as getLocalSavedTrips,
   saveTrip as saveLocalTrip
 } from '../utils/storage';
+import { seedDestinations } from '../data/fallbackDestinations';
+import { getRecommendations as getLocalRecommendations } from './recommendationEngine';
 
 const API_BASE = '/api';
 
@@ -47,9 +49,24 @@ class ApiService {
     try {
       return await this.request<Destination[]>(`/destinations${queryString}`);
     } catch (err) {
-      console.warn('Backend unavailable, falling back to cached destinations:', err);
-      // Fallback to local storage if present
-      return getLocalSavedDestinations();
+      console.warn('Backend unavailable, falling back to local destination catalog:', err);
+      let list = seedDestinations();
+      if (params?.category) {
+        list = list.filter((d) => d.categories?.some((c) => c.toLowerCase() === params.category!.toLowerCase()));
+      }
+      if (params?.state) {
+        list = list.filter((d) => d.state?.toLowerCase() === params.state!.toLowerCase());
+      }
+      if (params?.search) {
+        const q = params.search.toLowerCase();
+        list = list.filter(
+          (d) =>
+            d.name.toLowerCase().includes(q) ||
+            d.state.toLowerCase().includes(q) ||
+            d.description.toLowerCase().includes(q)
+        );
+      }
+      return list;
     }
   }
 
@@ -57,9 +74,9 @@ class ApiService {
     try {
       return await this.request<Destination>(`/destinations/${id}`);
     } catch (err) {
-      console.warn(`Failed to fetch destination ${id} from backend:`, err);
-      const local = getLocalSavedDestinations().find(d => d.id === id);
-      return local || null;
+      console.warn(`Failed to fetch destination ${id} from backend, falling back to local catalog:`, err);
+      const match = seedDestinations().find((d) => d.id === id);
+      return match || null;
     }
   }
 
@@ -71,8 +88,9 @@ class ApiService {
         body: JSON.stringify(preferences)
       });
     } catch (err) {
-      console.error('Failed to get recommendations from API:', err);
-      throw err;
+      console.warn('Backend unavailable, computing recommendations locally:', err);
+      const all = seedDestinations();
+      return getLocalRecommendations(preferences, all).slice(0, 12);
     }
   }
 
