@@ -226,8 +226,8 @@ const TripBuilder: React.FC = () => {
   if (!tripPlan) {
     return (
       <div className="min-h-[80vh] flex flex-col items-center justify-center px-4">
-        <div className="w-16 h-16 border-4 border-slate-800 border-t-brand-400 rounded-full animate-spin mb-4" />
-        <p className="text-slate-400 text-sm">Initializing itinerary canvas...</p>
+        <div className="w-16 h-16 border-4 border-slate-200 border-t-[#0D9488] rounded-full animate-spin mb-4" />
+        <p className="text-[#64748B] text-sm">Initializing itinerary canvas...</p>
       </div>
     );
   }
@@ -237,11 +237,11 @@ const TripBuilder: React.FC = () => {
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-10">
       {/* Top Banner Navigation */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-8">
         <div className="flex-grow space-y-2">
           <button
             onClick={() => navigate('/explore')}
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-400 hover:text-brand-300 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0D9488] hover:text-[#0b7a70] transition-colors"
           >
             <ArrowLeft size={16} />
             <span>Atlas & Recommendations</span>
@@ -252,22 +252,22 @@ const TripBuilder: React.FC = () => {
             type="text"
             value={tripName}
             onChange={(e) => setTripName(e.target.value)}
-            className="text-3xl sm:text-5xl font-black text-white bg-transparent border-b-2 border-transparent hover:border-slate-700 focus:border-brand-500 outline-none w-full py-1 transition-all"
+            className="text-3xl sm:text-5xl font-black text-[#163047] bg-transparent border-b-2 border-transparent hover:border-slate-300 focus:border-[#0D9488] outline-none w-full py-1 transition-all placeholder:text-slate-300"
             placeholder="Name your journey..."
           />
 
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 pt-1">
-            <span className="flex items-center gap-1.5 text-slate-300 font-semibold">
-              <MapPin size={14} className="text-brand-400" />
+          <div className="flex flex-wrap items-center gap-3 text-xs text-[#64748B] pt-1">
+            <span className="flex items-center gap-1.5 text-[#163047] font-semibold">
+              <MapPin size={14} className="text-[#0D9488]" />
               {selectedDestinations.map((d) => d.name).join(', ')}
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <Calendar size={14} className="text-purple-400" />
+              <Calendar size={14} className="text-sky-500" />
               {tripPlan.duration} Days Scheduled
             </span>
             <span>•</span>
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-[#0D9488] font-semibold">
               Est. Budget: ₹{primaryDest?.estimated_budget_min.toLocaleString('en-IN')} - ₹{primaryDest?.estimated_budget_max.toLocaleString('en-IN')}
             </span>
           </div>
@@ -290,7 +290,7 @@ const TripBuilder: React.FC = () => {
             onClick={handleSaveTrip}
             disabled={isSaving || isSaved}
             className={`glass-button-primary text-xs flex items-center gap-2 !py-3 !px-6 ${
-              isSaved ? '!from-emerald-600 !to-emerald-700 pointer-events-none' : ''
+              isSaved ? '!bg-emerald-600 !from-emerald-600 !to-emerald-600 text-white pointer-events-none' : ''
             }`}
           >
             {isSaved ? (
@@ -310,9 +310,9 @@ const TripBuilder: React.FC = () => {
 
       {/* Destination Switcher Pill if multiple available */}
       {availableDestinations.length > 0 && (
-        <div className="glass-card p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 text-slate-300">
-            <Sparkles size={16} className="text-brand-400" />
+        <div className="glass-card p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs bg-white">
+          <div className="flex items-center gap-2 text-[#163047] font-medium">
+            <Sparkles size={16} className="text-[#0D9488]" />
             <span>Want to plan for a different destination?</span>
           </div>
           <div className="flex items-center gap-2">
@@ -322,7 +322,7 @@ const TripBuilder: React.FC = () => {
                 const found = availableDestinations.find((d) => d.id === e.target.value);
                 if (found) setSelectedDestinations([found]);
               }}
-              className="bg-slate-900 border border-slate-700 text-white rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-brand-500"
+              className="bg-[#F8FAFC] border border-slate-200 text-[#163047] rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-[#0D9488]"
             >
               {availableDestinations.map((d) => (
                 <option key={d.id} value={d.id}>
@@ -335,25 +335,25 @@ const TripBuilder: React.FC = () => {
       )}
 
       {/* Days & Timeline Canvas */}
-      <div className="glass-card p-6 sm:p-10 space-y-12">
+      <div className="glass-card p-6 sm:p-10 space-y-12 bg-white">
         {tripPlan.days.map((day, dIdx) => (
           <div key={day.dayNumber} className="relative">
             {/* Timeline Vertical Thread */}
             {dIdx !== tripPlan.days.length - 1 && (
-              <div className="absolute left-6 top-16 bottom-[-3.5rem] w-[2px] bg-slate-800" />
+              <div className="absolute left-6 top-16 bottom-[-3.5rem] w-[2px] bg-slate-200" />
             )}
 
             {/* Day Header Badge */}
             <div className="flex items-center justify-between mb-6 relative z-10">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-emerald-500 text-white flex items-center justify-center font-black text-lg shadow-glow-brand">
+                <div className="w-12 h-12 rounded-2xl bg-[#0D9488] text-white flex items-center justify-center font-black text-lg shadow-teal-sm">
                   D{day.dayNumber}
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-black text-white">
+                  <h2 className="text-xl sm:text-2xl font-black text-[#163047]">
                     Day {day.dayNumber}
                   </h2>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-[#64748B]">
                     {day.activities.length} planned activities
                   </p>
                 </div>
@@ -364,7 +364,7 @@ const TripBuilder: React.FC = () => {
                 onClick={() => openAddActivityModal(dIdx)}
                 className="glass-button-secondary text-xs flex items-center gap-1.5 !py-2 !px-3"
               >
-                <Plus size={14} className="text-brand-400" />
+                <Plus size={14} className="text-[#0D9488]" />
                 <span>Add Activity</span>
               </button>
             </div>
@@ -374,22 +374,22 @@ const TripBuilder: React.FC = () => {
               {day.activities.map((activity) => (
                 <div
                   key={activity.id}
-                  className="group glass-card p-4 sm:p-5 rounded-2xl flex items-start justify-between gap-4 border border-white/5 hover:border-brand-500/30 transition-all"
+                  className="group bg-[#F8FAFC] hover:bg-white p-4 sm:p-5 rounded-2xl flex items-start justify-between gap-4 border border-slate-200 hover:border-[#0D9488]/40 hover:shadow-card transition-all"
                 >
                   <div className="space-y-1 flex-grow">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-bold text-brand-400 bg-brand-500/15 px-2.5 py-0.5 rounded-lg border border-brand-500/30">
+                      <span className="text-xs font-bold text-[#0D9488] bg-teal-50 px-2.5 py-0.5 rounded-lg border border-teal-200">
                         {activity.time}
                       </span>
-                      <span className="text-[10px] font-semibold text-slate-400 bg-slate-800 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                      <span className="text-[10px] font-semibold text-[#64748B] bg-slate-100 px-2 py-0.5 rounded-md uppercase tracking-wider">
                         {activity.type}
                       </span>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-white pt-1">
+                    <h3 className="text-base sm:text-lg font-bold text-[#163047] pt-1">
                       {activity.title}
                     </h3>
-                    <p className="text-xs text-slate-400 flex items-center gap-1">
-                      <MapPin size={13} className="text-brand-400" />
+                    <p className="text-xs text-[#64748B] flex items-center gap-1">
+                      <MapPin size={13} className="text-[#0D9488]" />
                       {activity.location}
                     </p>
                   </div>
@@ -398,7 +398,7 @@ const TripBuilder: React.FC = () => {
                     type="button"
                     onClick={() => removeActivity(dIdx, activity.id)}
                     aria-label="Delete activity"
-                    className="text-slate-500 hover:text-rose-400 p-2 rounded-xl hover:bg-slate-800 transition-colors opacity-70 group-hover:opacity-100"
+                    className="text-slate-400 hover:text-rose-500 p-2 rounded-xl hover:bg-slate-100 transition-colors opacity-70 group-hover:opacity-100"
                   >
                     <Trash2 size={16} />
                   </button>
@@ -409,13 +409,13 @@ const TripBuilder: React.FC = () => {
         ))}
 
         {/* Append Extra Day */}
-        <div className="pt-6 border-t border-slate-800 flex justify-center">
+        <div className="pt-6 border-t border-slate-200 flex justify-center">
           <button
             type="button"
             onClick={addDay}
             className="glass-button-secondary flex items-center gap-2 text-sm !py-3 !px-6"
           >
-            <Plus size={18} className="text-brand-400" />
+            <Plus size={18} className="text-[#0D9488]" />
             <span>Add Day {tripPlan.days.length + 1} to Itinerary</span>
           </button>
         </div>
@@ -424,22 +424,22 @@ const TripBuilder: React.FC = () => {
       {/* Add Activity Modal */}
       <AnimatePresence>
         {activeDayModal !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="glass-card max-w-md w-full p-6 sm:p-8 space-y-6 border border-brand-500/30 shadow-2xl"
+              className="bg-white max-w-md w-full p-6 sm:p-8 space-y-6 rounded-3xl border border-slate-200 shadow-2xl"
             >
-              <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Plus size={18} className="text-brand-400" />
+              <div className="flex justify-between items-center border-b border-slate-200 pb-3">
+                <h3 className="text-lg font-bold text-[#163047] flex items-center gap-2">
+                  <Plus size={18} className="text-[#0D9488]" />
                   <span>Add Activity for Day {(activeDayModal ?? 0) + 1}</span>
                 </h3>
                 <button
                   type="button"
                   onClick={() => setActiveDayModal(null)}
-                  className="text-slate-400 hover:text-white"
+                  className="text-slate-400 hover:text-[#163047]"
                 >
                   ✕
                 </button>
@@ -447,7 +447,7 @@ const TripBuilder: React.FC = () => {
 
               <form onSubmit={handleAddActivitySubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#163047] uppercase tracking-wider mb-1.5">
                     Activity Title
                   </label>
                   <input
@@ -462,7 +462,7 @@ const TripBuilder: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-[#163047] uppercase tracking-wider mb-1.5">
                       Schedule Time
                     </label>
                     <input
@@ -474,7 +474,7 @@ const TripBuilder: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-semibold text-[#163047] uppercase tracking-wider mb-1.5">
                       Category
                     </label>
                     <select
@@ -482,17 +482,17 @@ const TripBuilder: React.FC = () => {
                       onChange={(e) => setNewType(e.target.value as any)}
                       className="glass-input w-full text-sm cursor-pointer"
                     >
-                      <option value="Activity" className="bg-slate-900">Activity</option>
-                      <option value="Sightseeing" className="bg-slate-900">Sightseeing</option>
-                      <option value="Dining" className="bg-slate-900">Dining</option>
-                      <option value="Leisure" className="bg-slate-900">Leisure</option>
-                      <option value="Logistics" className="bg-slate-900">Logistics</option>
+                      <option value="Activity" className="bg-white text-[#163047]">Activity</option>
+                      <option value="Sightseeing" className="bg-white text-[#163047]">Sightseeing</option>
+                      <option value="Dining" className="bg-white text-[#163047]">Dining</option>
+                      <option value="Leisure" className="bg-white text-[#163047]">Leisure</option>
+                      <option value="Logistics" className="bg-white text-[#163047]">Logistics</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#163047] uppercase tracking-wider mb-1.5">
                     Location / Landmark
                   </label>
                   <input

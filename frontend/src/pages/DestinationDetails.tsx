@@ -88,10 +88,10 @@ const DestinationDetails: React.FC = () => {
     return (
       <div className="min-h-[80vh] flex flex-col items-center justify-center px-4">
         <div className="relative w-20 h-20 mb-6">
-          <div className="w-20 h-20 border-4 border-slate-800 border-t-brand-400 rounded-full animate-spin" />
-          <Sparkles className="absolute inset-0 m-auto text-brand-400 w-8 h-8 animate-pulse" />
+          <div className="w-20 h-20 border-4 border-slate-200 border-t-brand-500 rounded-full animate-spin" />
+          <Sparkles className="absolute inset-0 m-auto text-brand-500 w-8 h-8 animate-pulse" />
         </div>
-        <p className="text-slate-400 text-sm">Loading destination intelligence...</p>
+        <p className="text-slate-500 text-sm font-medium">Loading destination intelligence...</p>
       </div>
     );
   }
@@ -99,11 +99,11 @@ const DestinationDetails: React.FC = () => {
   if (!dest) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center space-y-4">
-        <div className="w-16 h-16 rounded-2xl bg-slate-800 text-slate-400 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center">
           <MapPin size={32} />
         </div>
-        <h2 className="text-2xl font-bold text-white">Destination not found</h2>
-        <p className="text-slate-400 text-sm max-w-sm">
+        <h2 className="text-2xl font-bold text-[#163047]">Destination not found</h2>
+        <p className="text-slate-500 text-sm max-w-sm">
           The requested destination record could not be found or has been moved.
         </p>
         <button
@@ -123,15 +123,15 @@ const DestinationDetails: React.FC = () => {
         <img
           src={dest.image}
           alt={dest.name}
-          className="w-full h-full object-cover filter brightness-[0.75]"
+          className="w-full h-full object-cover filter brightness-[0.8]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#163047]/90 via-[#163047]/40 to-black/30" />
 
         {/* Back and Utility Actions */}
         <div className="absolute top-6 left-4 sm:left-8 right-4 sm:right-8 flex justify-between items-center z-10">
           <button
             onClick={() => navigate(-1)}
-            className="w-11 h-11 bg-slate-950/70 hover:bg-slate-900 backdrop-blur-md border border-white/15 rounded-2xl flex items-center justify-center text-white transition-all shadow-md active:scale-95"
+            className="w-11 h-11 bg-white/90 hover:bg-white backdrop-blur-md border border-slate-200 rounded-2xl flex items-center justify-center text-[#163047] transition-all shadow-md active:scale-95"
             aria-label="Go back"
           >
             <ArrowLeft size={18} />
@@ -140,19 +140,19 @@ const DestinationDetails: React.FC = () => {
           <div className="flex gap-3">
             <button
               onClick={handleShare}
-              className="w-11 h-11 bg-slate-950/70 hover:bg-slate-900 backdrop-blur-md border border-white/15 rounded-2xl flex items-center justify-center text-white transition-all shadow-md active:scale-95"
+              className="w-11 h-11 bg-white/90 hover:bg-white backdrop-blur-md border border-slate-200 rounded-2xl flex items-center justify-center text-[#163047] transition-all shadow-md active:scale-95"
               aria-label="Share destination"
             >
               <Share2 size={18} />
             </button>
             <button
               onClick={toggleSave}
-              className="w-11 h-11 bg-slate-950/70 hover:bg-slate-900 backdrop-blur-md border border-white/15 rounded-2xl flex items-center justify-center text-white transition-all shadow-md active:scale-95"
+              className="w-11 h-11 bg-white/90 hover:bg-white backdrop-blur-md border border-slate-200 rounded-2xl flex items-center justify-center text-[#163047] transition-all shadow-md active:scale-95"
               aria-label="Save to bookmarks"
             >
               <Heart
                 size={18}
-                className={isSaved ? 'fill-red-500 text-red-500' : 'text-white'}
+                className={isSaved ? 'fill-red-500 text-red-500' : 'text-slate-600'}
               />
             </button>
           </div>
@@ -169,12 +169,12 @@ const DestinationDetails: React.FC = () => {
                   </span>
                 ))}
               </div>
-              <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight">
+              <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight drop-shadow-sm">
                 {dest.name}
               </h1>
               <p className="text-base sm:text-lg text-slate-200 flex items-center gap-3">
                 <span className="flex items-center gap-1.5 font-medium">
-                  <MapPin size={18} className="text-brand-400" /> {dest.state}
+                  <MapPin size={18} className="text-brand-300" /> {dest.state}
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5 text-amber-300 font-bold">
@@ -186,7 +186,7 @@ const DestinationDetails: React.FC = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleBuildTrip}
-                className="glass-button-primary flex items-center gap-2 text-sm !py-3.5 !px-7 shadow-glow-brand"
+                className="glass-button-primary flex items-center gap-2 text-sm !py-3.5 !px-7 shadow-teal"
               >
                 <Layers size={18} />
                 <span>Build Itinerary</span>
@@ -201,27 +201,27 @@ const DestinationDetails: React.FC = () => {
         {/* Left Column: Deep Guide */}
         <div className="lg:col-span-2 space-y-12">
           {/* About */}
-          <section className="glass-card p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <Sparkles size={20} className="text-brand-400" />
+          <section className="glass-card p-6 sm:p-8 space-y-4 bg-white border border-slate-200 shadow-card">
+            <h2 className="text-xl font-bold text-[#163047] flex items-center gap-2">
+              <Sparkles size={20} className="text-brand-500" />
               <span>About {dest.name}</span>
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed">
+            <p className="text-slate-600 text-base leading-relaxed">
               {dest.description}
             </p>
           </section>
 
           {/* Things to Do */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-white">Curated Activities & Highlights</h2>
+            <h2 className="text-xl font-bold text-[#163047]">Curated Activities & Highlights</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {(dest.things_to_do || []).map((thing, i) => (
                 <div
                   key={i}
-                  className="glass-card p-4 rounded-xl flex items-start gap-3 border border-white/5"
+                  className="glass-card p-4 rounded-xl flex items-start gap-3 bg-white border border-slate-200 shadow-xs"
                 >
-                  <CheckCircle2 className="text-brand-400 flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-sm font-semibold text-slate-200">{thing}</span>
+                  <CheckCircle2 className="text-brand-500 flex-shrink-0 mt-0.5" size={18} />
+                  <span className="text-sm font-semibold text-[#163047]">{thing}</span>
                 </div>
               ))}
             </div>
@@ -229,11 +229,11 @@ const DestinationDetails: React.FC = () => {
 
           {/* How to Reach */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <Navigation size={20} className="text-sky-400" />
+            <h2 className="text-xl font-bold text-[#163047] flex items-center gap-2">
+              <Navigation size={20} className="text-sky-500" />
               <span>How to Reach</span>
             </h2>
-            <div className="glass-card p-6 space-y-5">
+            <div className="glass-card p-6 space-y-5 bg-white border border-slate-200 shadow-card">
               {(dest.how_to_reach || []).map((route, i) => {
                 const isAir = route.mode.toLowerCase().includes('flight') || route.mode.toLowerCase().includes('air');
                 const isTrain = route.mode.toLowerCase().includes('train') || route.mode.toLowerCase().includes('rail');
@@ -243,15 +243,15 @@ const DestinationDetails: React.FC = () => {
                   <div
                     key={i}
                     className={`flex gap-4 ${
-                      i !== 0 ? 'pt-5 border-t border-slate-800' : ''
+                      i !== 0 ? 'pt-5 border-t border-slate-100' : ''
                     }`}
                   >
-                    <div className="w-11 h-11 bg-slate-800 border border-slate-700/80 text-brand-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-11 h-11 bg-brand-50 border border-brand-100 text-brand-600 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Icon size={20} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-sm text-white mb-0.5">By {route.mode}</h3>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <h3 className="font-bold text-sm text-[#163047] mb-0.5">By {route.mode}</h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {route.description}
                       </p>
                     </div>
@@ -264,12 +264,12 @@ const DestinationDetails: React.FC = () => {
           {/* Nearby Places to Visit */}
           {(dest.nearby_places || []).length > 0 && (
             <section className="space-y-4">
-              <h2 className="text-xl font-bold text-white">Nearby Attractions</h2>
+              <h2 className="text-xl font-bold text-[#163047]">Nearby Attractions</h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {dest.nearby_places.map((place, i) => (
                   <div
                     key={i}
-                    className="group glass-card rounded-2xl overflow-hidden flex border border-white/5"
+                    className="group glass-card rounded-2xl overflow-hidden flex bg-white border border-slate-200 shadow-card"
                   >
                     <div className="w-1/3 h-28 relative overflow-hidden">
                       <img
@@ -279,8 +279,8 @@ const DestinationDetails: React.FC = () => {
                       />
                     </div>
                     <div className="p-4 w-2/3 flex flex-col justify-center">
-                      <h4 className="font-bold text-sm text-white">{place.name}</h4>
-                      <p className="text-xs text-brand-400 mt-0.5">
+                      <h4 className="font-bold text-sm text-[#163047]">{place.name}</h4>
+                      <p className="text-xs text-brand-600 font-medium mt-0.5">
                         {place.category} • {place.distance_km} km away
                       </p>
                     </div>
@@ -294,51 +294,51 @@ const DestinationDetails: React.FC = () => {
         {/* Right Sidebar: Key Metrics & Stays */}
         <div className="space-y-6">
           {/* Quick Metrics Card */}
-          <div className="glass-card p-6 space-y-6 border border-brand-500/30 shadow-glow-brand">
-            <h3 className="font-bold text-lg text-white border-b border-slate-800 pb-3">
+          <div className="glass-card p-6 space-y-6 bg-white border border-brand-200 shadow-card">
+            <h3 className="font-bold text-lg text-[#163047] border-b border-slate-100 pb-3">
               Trip Overview
             </h3>
 
             <div className="space-y-5">
               <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
                   <IndianRupee size={18} />
                 </div>
                 <div>
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                     Estimated Budget Range
                   </p>
-                  <p className="font-extrabold text-white text-base mt-0.5">
+                  <p className="font-extrabold text-[#163047] text-base mt-0.5">
                     ₹{dest.estimated_budget_min.toLocaleString('en-IN')} - ₹{dest.estimated_budget_max.toLocaleString('en-IN')}
                   </p>
-                  <p className="text-[11px] text-slate-400">Total per traveler</p>
+                  <p className="text-[11px] text-slate-500">Total per traveler</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 bg-purple-500/15 border border-purple-500/30 text-purple-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-sky-50 border border-sky-100 text-sky-600 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Calendar size={18} />
                 </div>
                 <div>
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                     Recommended Duration
                   </p>
-                  <p className="font-extrabold text-white text-base mt-0.5">
+                  <p className="font-extrabold text-[#163047] text-base mt-0.5">
                     {dest.recommended_duration_min} to {dest.recommended_duration_max} Days
                   </p>
-                  <p className="text-[11px] text-slate-400">Optimal pace for highlights</p>
+                  <p className="text-[11px] text-slate-500">Optimal pace for highlights</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 bg-amber-500/15 border border-amber-500/30 text-amber-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-amber-50 border border-amber-100 text-amber-600 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Map size={18} />
                 </div>
                 <div>
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                     Prime Season to Visit
                   </p>
-                  <p className="font-extrabold text-white text-base mt-0.5">
+                  <p className="font-extrabold text-[#163047] text-base mt-0.5">
                     {(dest.best_season || []).join(', ')}
                   </p>
                 </div>
@@ -355,39 +355,39 @@ const DestinationDetails: React.FC = () => {
           </div>
 
           {/* Where to Stay */}
-          <div className="glass-card p-6 space-y-4">
-            <h3 className="font-bold text-base text-white flex items-center gap-2">
-              <Bed className="text-brand-400" size={18} />
+          <div className="glass-card p-6 space-y-4 bg-white border border-slate-200 shadow-card">
+            <h3 className="font-bold text-base text-[#163047] flex items-center gap-2">
+              <Bed className="text-brand-500" size={18} />
               <span>Recommended Accommodations</span>
             </h3>
             <div className="space-y-3.5">
               {(dest.stay_options || []).map((stay, i) => (
-                <div key={i} className="pb-3 border-b border-slate-800 last:border-0 last:pb-0 space-y-1">
+                <div key={i} className="pb-3 border-b border-slate-100 last:border-0 last:pb-0 space-y-1">
                   <div className="flex justify-between items-start">
-                    <h4 className="font-bold text-sm text-slate-200">{stay.name}</h4>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">
+                    <h4 className="font-bold text-sm text-[#163047]">{stay.name}</h4>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
                       {stay.budget_level}
                     </span>
                   </div>
-                  <p className="text-xs text-brand-400 font-medium">{stay.type}</p>
-                  <p className="text-xs text-slate-400 leading-snug">{stay.description}</p>
+                  <p className="text-xs text-brand-600 font-medium">{stay.type}</p>
+                  <p className="text-xs text-slate-500 leading-snug">{stay.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Where to Eat */}
-          <div className="glass-card p-6 space-y-4">
-            <h3 className="font-bold text-base text-white flex items-center gap-2">
-              <Utensils className="text-amber-400" size={18} />
+          <div className="glass-card p-6 space-y-4 bg-white border border-slate-200 shadow-card">
+            <h3 className="font-bold text-base text-[#163047] flex items-center gap-2">
+              <Utensils className="text-amber-500" size={18} />
               <span>Culinary Experiences</span>
             </h3>
             <div className="space-y-3.5">
               {(dest.restaurant_options || []).map((rest, i) => (
-                <div key={i} className="pb-3 border-b border-slate-800 last:border-0 last:pb-0 space-y-1">
-                  <h4 className="font-bold text-sm text-slate-200">{rest.name}</h4>
-                  <p className="text-xs text-amber-400 font-medium">{rest.cuisine}</p>
-                  <p className="text-xs text-slate-400 leading-snug">{rest.description}</p>
+                <div key={i} className="pb-3 border-b border-slate-100 last:border-0 last:pb-0 space-y-1">
+                  <h4 className="font-bold text-sm text-[#163047]">{rest.name}</h4>
+                  <p className="text-xs text-amber-600 font-medium">{rest.cuisine}</p>
+                  <p className="text-xs text-slate-500 leading-snug">{rest.description}</p>
                 </div>
               ))}
             </div>

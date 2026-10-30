@@ -84,26 +84,26 @@ const Saved: React.FC = () => {
       {/* Header */}
       <div>
         <span className="badge-emerald mb-2">My Saved Collections</span>
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-black text-[#163047] tracking-tight">
           Saved Destinations & Itineraries
         </h1>
-        <p className="text-slate-400 text-sm mt-1">
+        <p className="text-[#64748B] text-sm mt-1">
           Your bookmarked regions and personalized travel schedules saved to your SQLite profile.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex space-x-2 border-b border-slate-800 pb-3">
+      <div className="flex space-x-2 border-b border-slate-200 pb-3">
         <button
           onClick={() => setActiveTab('destinations')}
           className={`relative px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
             activeTab === 'destinations'
-              ? 'text-white bg-slate-900 border border-brand-500/40'
-              : 'text-slate-400 hover:text-white'
+              ? 'text-[#163047] bg-white border border-[#0D9488]/40 shadow-sm'
+              : 'text-[#64748B] hover:text-[#163047]'
           }`}
         >
           <span>Bookmarked Places</span>
-          <span className="px-2 py-0.5 rounded-full text-xs bg-brand-500/20 text-brand-300 font-mono">
+          <span className="px-2 py-0.5 rounded-full text-xs bg-teal-50 border border-teal-200 text-[#0D9488] font-mono">
             {destinations.length}
           </span>
         </button>
@@ -112,12 +112,12 @@ const Saved: React.FC = () => {
           onClick={() => setActiveTab('trips')}
           className={`relative px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
             activeTab === 'trips'
-              ? 'text-white bg-slate-900 border border-brand-500/40'
-              : 'text-slate-400 hover:text-white'
+              ? 'text-[#163047] bg-white border border-[#0D9488]/40 shadow-sm'
+              : 'text-[#64748B] hover:text-[#163047]'
           }`}
         >
           <span>My Planned Trips</span>
-          <span className="px-2 py-0.5 rounded-full text-xs bg-brand-500/20 text-brand-300 font-mono">
+          <span className="px-2 py-0.5 rounded-full text-xs bg-teal-50 border border-teal-200 text-[#0D9488] font-mono">
             {trips.length}
           </span>
         </button>
@@ -133,11 +133,11 @@ const Saved: React.FC = () => {
       ) : activeTab === 'destinations' ? (
         destinations.length === 0 ? (
           <div className="glass-card p-12 text-center space-y-4 max-w-lg mx-auto">
-            <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 text-slate-400 flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 text-[#0D9488] flex items-center justify-center mx-auto">
               <MapPin size={28} />
             </div>
-            <h3 className="text-xl font-bold text-white">No bookmarked destinations yet</h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h3 className="text-xl font-bold text-[#163047]">No bookmarked destinations yet</h3>
+            <p className="text-xs text-[#64748B] leading-relaxed">
               Explore places on the atlas or match engine and tap the heart icon to save them for easy reference.
             </p>
             <Link to="/explore" className="glass-button-primary inline-flex items-center gap-2 text-xs !py-3">
@@ -151,7 +151,7 @@ const Saved: React.FC = () => {
               <div
                 key={dest.id}
                 onClick={() => navigate(`/destination/${dest.id}`)}
-                className="group glass-card-hover rounded-2xl overflow-hidden flex flex-col cursor-pointer border border-white/5"
+                className="group glass-card-hover rounded-2xl overflow-hidden flex flex-col cursor-pointer bg-white"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -159,35 +159,35 @@ const Saved: React.FC = () => {
                     alt={dest.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#163047]/90 via-transparent to-black/30" />
                   <button
                     onClick={(e) => handleRemoveDestination(dest.id, dest.name, e)}
-                    className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-slate-950/80 backdrop-blur border border-white/10 flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-900 transition-all shadow-sm"
+                    className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:bg-white transition-all shadow-sm"
                     title="Remove from saved"
                   >
                     <Trash2 size={15} />
                   </button>
-                  <div className="absolute bottom-3 left-3 text-xs text-slate-200 font-medium flex items-center gap-1">
-                    <MapPin size={13} className="text-brand-400" />
+                  <div className="absolute bottom-3 left-3 text-xs text-white font-medium flex items-center gap-1 drop-shadow-md">
+                    <MapPin size={13} className="text-sky-300" />
                     <span>{dest.state}</span>
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
+                <div className="p-5 flex flex-col flex-grow justify-between space-y-4 bg-white">
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-brand-300 transition-colors">
+                    <h3 className="text-lg font-bold text-[#163047] group-hover:text-[#0D9488] transition-colors">
                       {dest.name}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-2 mt-1">
+                    <p className="text-xs text-[#64748B] line-clamp-2 mt-1">
                       {dest.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-                    <span className="text-slate-400">
+                  <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+                    <span className="text-[#64748B] font-medium">
                       ₹{dest.estimated_budget_min.toLocaleString('en-IN')} - ₹{dest.estimated_budget_max.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-brand-400 font-semibold">
+                    <span className="text-[#0D9488] font-bold">
                       {dest.recommended_duration_min}-{dest.recommended_duration_max} Days
                     </span>
                   </div>
@@ -198,11 +198,11 @@ const Saved: React.FC = () => {
         )
       ) : trips.length === 0 ? (
         <div className="glass-card p-12 text-center space-y-4 max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 text-slate-400 flex items-center justify-center mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 text-[#0D9488] flex items-center justify-center mx-auto">
             <Layers size={28} />
           </div>
-          <h3 className="text-xl font-bold text-white">No custom itineraries planned yet</h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <h3 className="text-xl font-bold text-[#163047]">No custom itineraries planned yet</h3>
+          <p className="text-xs text-[#64748B] leading-relaxed">
             Use the Trip Builder or recommendation engine to craft structured day-by-day itineraries.
           </p>
           <Link to="/plan" className="glass-button-primary inline-flex items-center gap-2 text-xs !py-3">
@@ -215,33 +215,33 @@ const Saved: React.FC = () => {
           {trips.map((trip) => (
             <div
               key={trip.id}
-              className="glass-card p-6 rounded-2xl flex flex-col justify-between border border-white/5 space-y-6"
+              className="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-6 bg-white"
             >
               <div>
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-white leading-snug">{trip.name}</h3>
+                  <h3 className="text-xl font-bold text-[#163047] leading-snug">{trip.name}</h3>
                   <button
                     onClick={(e) => handleDeleteTrip(trip.id, trip.name, e)}
-                    className="text-slate-500 hover:text-rose-400 p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
+                    className="text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
                     title="Delete itinerary"
                   >
                     <Trash2 size={16} />
                   </button>
                 </div>
 
-                <p className="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
-                  <MapPin size={13} className="text-brand-400" />
+                <p className="text-xs text-[#64748B] flex items-center gap-1.5 mb-4">
+                  <MapPin size={13} className="text-[#0D9488]" />
                   <span>
                     {(trip.destinations || []).map((d) => d.name).join(', ') || 'Custom Destinations'}
                   </span>
                 </p>
 
-                <div className="flex gap-4 pt-3 border-t border-slate-800 text-xs">
-                  <div className="flex items-center gap-1.5 text-brand-300 font-semibold">
+                <div className="flex gap-4 pt-3 border-t border-slate-200 text-xs">
+                  <div className="flex items-center gap-1.5 text-[#0D9488] font-semibold">
                     <Calendar size={15} />
                     <span>{trip.duration} Days</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-purple-300">
+                  <div className="flex items-center gap-1.5 text-sky-600 font-medium">
                     <Clock size={15} />
                     <span>
                       {(trip.days || []).reduce((acc, d) => acc + (d.activities?.length || 0), 0)} Activities

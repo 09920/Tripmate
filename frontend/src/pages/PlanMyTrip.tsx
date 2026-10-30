@@ -93,13 +93,13 @@ const PlanMyTrip: React.FC = () => {
         <div className="absolute w-96 h-96 bg-brand-500/10 blur-[100px] rounded-full pointer-events-none" />
         <div className="relative z-10 text-center space-y-6 max-w-md">
           <div className="relative w-20 h-20 mx-auto">
-            <div className="w-20 h-20 border-4 border-slate-800 border-t-brand-400 rounded-full animate-spin" />
-            <Sparkles className="absolute inset-0 m-auto text-brand-400 w-8 h-8 animate-pulse" />
+            <div className="w-20 h-20 border-4 border-slate-200 border-t-brand-500 rounded-full animate-spin" />
+            <Sparkles className="absolute inset-0 m-auto text-brand-500 w-8 h-8 animate-pulse" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#163047]">
             Matching Your Ideal Destinations
           </h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
+          <p className="text-slate-500 text-sm leading-relaxed">
             Running vector cosine similarity, seasonal month correlation, and budget penalty scoring across our destination database...
           </p>
         </div>
@@ -114,15 +114,15 @@ const PlanMyTrip: React.FC = () => {
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Wizard Header & Progress Steps */}
         <div className="space-y-4">
-          <div className="flex justify-between items-center text-xs text-slate-400 font-mono">
+          <div className="flex justify-between items-center text-xs text-slate-500 font-mono font-medium">
             <span>STEP {currentStep + 1} OF {steps.length}</span>
             <span>{Math.round(((currentStep + 1) / steps.length) * 100)}% COMPLETED</span>
           </div>
 
           {/* Stepper Bar */}
-          <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5">
+          <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-brand-500 to-emerald-400 shadow-glow-brand"
+              className="h-full bg-gradient-to-r from-brand-500 to-sky-400"
               initial={{ width: 0 }}
               animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
               transition={{ duration: 0.3 }}
@@ -142,13 +142,13 @@ const PlanMyTrip: React.FC = () => {
                   onClick={() => idx <= currentStep && setCurrentStep(idx)}
                   className={`flex items-center gap-1.5 p-2 rounded-xl text-left border transition-all text-xs ${
                     isCurr
-                      ? 'bg-slate-900 border-brand-500/50 text-brand-300 font-semibold'
+                      ? 'bg-white border-brand-500 text-brand-700 font-semibold shadow-xs'
                       : isPast
-                      ? 'bg-slate-950/60 border-emerald-500/20 text-slate-400 hover:text-white'
-                      : 'bg-transparent border-transparent text-slate-600 opacity-60'
+                      ? 'bg-white/80 border-slate-200 text-slate-600 hover:text-[#163047]'
+                      : 'bg-transparent border-transparent text-slate-400'
                   }`}
                 >
-                  <Icon size={14} className={isCurr ? 'text-brand-400' : isPast ? 'text-emerald-500' : 'text-slate-600'} />
+                  <Icon size={14} className={isCurr ? 'text-brand-500' : isPast ? 'text-brand-600' : 'text-slate-400'} />
                   <span className="truncate">{s.title}</span>
                 </button>
               );
@@ -157,13 +157,13 @@ const PlanMyTrip: React.FC = () => {
         </div>
 
         {/* Wizard Card Body */}
-        <div className="glass-card p-6 sm:p-10 border border-white/10 relative overflow-hidden">
+        <div className="glass-card p-6 sm:p-10 bg-white border border-slate-200 shadow-card relative overflow-hidden">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">
               <Sparkles size={14} />
               <span>{currentStepConfig.title}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#163047]">
               {currentStepConfig.subtitle}
             </h1>
           </div>
@@ -181,12 +181,12 @@ const PlanMyTrip: React.FC = () => {
               {currentStep === 0 && (
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 mb-2">
                       Departure City or Hub
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <MapPin className="text-brand-400" size={20} />
+                        <MapPin className="text-brand-500" size={20} />
                       </div>
                       <input
                         type="text"
@@ -199,7 +199,7 @@ const PlanMyTrip: React.FC = () => {
                   </div>
 
                   <div className="flex flex-wrap gap-2 pt-2">
-                    <span className="text-xs text-slate-400 self-center mr-1">Popular hubs:</span>
+                    <span className="text-xs text-slate-500 self-center mr-1">Popular hubs:</span>
                     {['Mumbai', 'Delhi', 'Bengaluru', 'Pune', 'Kochi', 'Kolkata'].map((city) => (
                       <button
                         key={city}
@@ -210,8 +210,8 @@ const PlanMyTrip: React.FC = () => {
                         }}
                         className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
                           preferences.starting_location === city
-                            ? 'bg-brand-500/20 border-brand-500/50 text-brand-300'
-                            : 'bg-slate-900 border-slate-700/60 text-slate-400 hover:text-white'
+                            ? 'bg-brand-50 border-brand-300 text-brand-700 font-medium'
+                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-[#163047]'
                         }`}
                       >
                         {city}
@@ -240,12 +240,12 @@ const PlanMyTrip: React.FC = () => {
                         onClick={() => setPreferences({ ...preferences, duration_days: item.days })}
                         className={`p-4 rounded-xl border text-left transition-all ${
                           preferences.duration_days === item.days
-                            ? 'bg-brand-500/20 border-brand-500/60 text-white shadow-glow-brand'
-                            : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                            ? 'bg-brand-50 border-brand-500 text-[#163047] shadow-sm'
+                            : 'bg-slate-50/70 border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                         }`}
                       >
-                        <span className="text-xl font-bold block text-brand-400">{item.days} Days</span>
-                        <span className="text-xs text-slate-400">{item.label}</span>
+                        <span className="text-xl font-bold block text-brand-600">{item.days} Days</span>
+                        <span className="text-xs text-slate-500">{item.label}</span>
                       </button>
                     ))}
                   </div>
@@ -256,7 +256,7 @@ const PlanMyTrip: React.FC = () => {
               {currentStep === 2 && (
                 <div className="space-y-8">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-3">
+                    <label className="block text-sm font-medium text-slate-700 mb-3">
                       Select Party Composition
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
@@ -267,8 +267,8 @@ const PlanMyTrip: React.FC = () => {
                           onClick={() => setPreferences({ ...preferences, traveller_type: type })}
                           className={`py-3.5 px-4 rounded-xl border font-semibold text-sm transition-all ${
                             preferences.traveller_type === type
-                              ? 'bg-brand-500/20 border-brand-500/60 text-brand-300 shadow-glow-brand'
-                              : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                              ? 'bg-brand-50 border-brand-500 text-brand-700 shadow-sm'
+                              : 'bg-slate-50/70 border-slate-200 text-slate-600 hover:border-slate-300'
                           }`}
                         >
                           {type}
@@ -277,13 +277,13 @@ const PlanMyTrip: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm font-bold text-white">Total Passenger Count</h4>
-                      <p className="text-xs text-slate-400">Used for vehicle sizing and room estimates</p>
+                      <h4 className="text-sm font-bold text-[#163047]">Total Passenger Count</h4>
+                      <p className="text-xs text-slate-500">Used for vehicle sizing and room estimates</p>
                     </div>
 
-                    <div className="flex items-center gap-4 bg-slate-900 border border-slate-700/80 rounded-2xl p-2">
+                    <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-2xl p-2">
                       <button
                         type="button"
                         onClick={() =>
@@ -292,11 +292,11 @@ const PlanMyTrip: React.FC = () => {
                             travellers_count: Math.max(1, prev.travellers_count - 1)
                           }))
                         }
-                        className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center transition-colors"
+                        className="w-10 h-10 rounded-xl bg-white hover:bg-slate-100 text-[#163047] border border-slate-200 font-bold flex items-center justify-center transition-colors"
                       >
                         -
                       </button>
-                      <span className="text-2xl font-black text-white w-10 text-center">
+                      <span className="text-2xl font-black text-[#163047] w-10 text-center">
                         {preferences.travellers_count}
                       </span>
                       <button
@@ -307,7 +307,7 @@ const PlanMyTrip: React.FC = () => {
                             travellers_count: Math.min(25, prev.travellers_count + 1)
                           }))
                         }
-                        className="w-10 h-10 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold flex items-center justify-center transition-colors"
+                        className="w-10 h-10 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold flex items-center justify-center transition-colors"
                       >
                         +
                       </button>
@@ -327,14 +327,14 @@ const PlanMyTrip: React.FC = () => {
                         onClick={() => setPreferences({ ...preferences, budget_max: amt })}
                         className={`p-4 rounded-xl border text-left transition-all ${
                           preferences.budget_max === amt
-                            ? 'bg-brand-500/20 border-brand-500/60 text-white shadow-glow-brand'
-                            : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                            ? 'bg-brand-50 border-brand-500 text-[#163047] shadow-sm'
+                            : 'bg-slate-50/70 border-slate-200 text-slate-600 hover:border-slate-300'
                         }`}
                       >
-                        <span className="text-lg font-bold block text-brand-300">
+                        <span className="text-lg font-bold block text-brand-700">
                           ₹{amt.toLocaleString('en-IN')}
                         </span>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-500">
                           {amt <= 15000 ? 'Budget Friendly' : amt <= 40000 ? 'Comfortable' : 'Premium Luxury'}
                         </span>
                       </button>
@@ -342,7 +342,7 @@ const PlanMyTrip: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                       Or specify custom ceiling
                     </label>
                     <div className="relative">
@@ -355,7 +355,7 @@ const PlanMyTrip: React.FC = () => {
                         onChange={(e) =>
                           setPreferences({ ...preferences, budget_max: Math.max(1000, Number(e.target.value) || 0) })
                         }
-                        className="glass-input w-full pl-10 text-lg font-bold text-white"
+                        className="glass-input w-full pl-10 text-lg font-bold text-[#163047]"
                         placeholder="Enter custom budget"
                       />
                     </div>
@@ -384,20 +384,20 @@ const PlanMyTrip: React.FC = () => {
                         onClick={() => setPreferences({ ...preferences, transport_preference: item.mode })}
                         className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
                           isSelected
-                            ? 'bg-brand-500/20 border-brand-500/60 text-white shadow-glow-brand'
-                            : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                            ? 'bg-brand-50 border-brand-500 text-[#163047] shadow-sm'
+                            : 'bg-slate-50/70 border-slate-200 text-slate-600 hover:border-slate-300'
                         }`}
                       >
                         <div
                           className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                            isSelected ? 'bg-brand-500 text-white' : 'bg-slate-800 text-slate-400'
+                            isSelected ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-500'
                           }`}
                         >
                           <Icon size={18} />
                         </div>
                         <div>
-                          <span className="font-bold text-sm block text-white">{item.mode}</span>
-                          <span className="text-[11px] text-slate-400 leading-tight">{item.label}</span>
+                          <span className="font-bold text-sm block text-[#163047]">{item.mode}</span>
+                          <span className="text-[11px] text-slate-500 leading-tight">{item.label}</span>
                         </div>
                       </button>
                     );
@@ -432,8 +432,8 @@ const PlanMyTrip: React.FC = () => {
                           onClick={() => toggleInterest(interest)}
                           className={`px-4 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
                             isSelected
-                              ? 'bg-brand-500/25 border-brand-500 text-brand-200 shadow-glow-brand'
-                              : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700'
+                              ? 'bg-brand-50 border-brand-500 text-brand-700 shadow-sm'
+                              : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
                           }`}
                         >
                           {interest}
@@ -443,7 +443,7 @@ const PlanMyTrip: React.FC = () => {
                   </div>
 
                   {preferences.interests.length === 0 && (
-                    <p className="text-xs text-amber-400 pt-2">
+                    <p className="text-xs text-amber-600 pt-2 font-medium">
                       * Pick at least one vibe so our TF-IDF engine can compute relevant recommendations.
                     </p>
                   )}
@@ -453,7 +453,7 @@ const PlanMyTrip: React.FC = () => {
           </AnimatePresence>
 
           {/* Action Footer */}
-          <div className="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center">
+          <div className="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
             <button
               type="button"
               onClick={prevStep}

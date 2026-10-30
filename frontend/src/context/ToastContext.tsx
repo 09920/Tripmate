@@ -54,24 +54,24 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.9 }}
               transition={{ duration: 0.25 }}
-              className={`pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-xl border backdrop-blur-xl shadow-glass ${
+              className={`pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-xl border bg-white shadow-lg ${
                 toast.type === 'success'
-                  ? 'bg-slate-900/90 border-brand-500/40 text-brand-100 shadow-glow-brand'
+                  ? 'border-brand-200 text-[#163047] shadow-teal-sm'
                   : toast.type === 'error'
-                  ? 'bg-slate-900/90 border-red-500/40 text-red-200'
-                  : 'bg-slate-900/90 border-blue-500/40 text-sky-200 shadow-glow-accent'
+                  ? 'border-red-200 text-[#163047]'
+                  : 'border-sky-200 text-[#163047]'
               }`}
             >
               <div className="flex items-center gap-3">
-                {toast.type === 'success' && <CheckCircle2 className="text-brand-400 flex-shrink-0" size={20} />}
-                {toast.type === 'error' && <AlertCircle className="text-red-400 flex-shrink-0" size={20} />}
-                {toast.type === 'info' && <Info className="text-sky-400 flex-shrink-0" size={20} />}
+                {toast.type === 'success' && <CheckCircle2 className="text-brand-500 flex-shrink-0" size={20} />}
+                {toast.type === 'error' && <AlertCircle className="text-rose-500 flex-shrink-0" size={20} />}
+                {toast.type === 'info' && <Info className="text-sky-500 flex-shrink-0" size={20} />}
                 <p className="text-sm font-medium leading-snug">{toast.message}</p>
               </div>
 
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-slate-400 hover:text-slate-200 transition-colors p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-lg"
               >
                 <X size={16} />
               </button>

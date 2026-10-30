@@ -4,60 +4,77 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        ocean: {
+          50: '#F0FDFA',
+          100: '#CCFBF1',
+          200: '#99F6E4',
+          300: '#5EEAD4',
+          400: '#2DD4BF',
+          500: '#0D9488', // Ocean teal primary
+          600: '#0F766E',
+          700: '#115E59',
+          800: '#134E4A',
+          900: '#163047',
+        },
         brand: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981', // Emerald-Teal Primary
+          50: '#F0FDFA',
+          100: '#CCFBF1',
+          200: '#A7F3D0', // Fresh mint accent
+          300: '#5EEAD4',
+          400: '#2DD4BF',
+          500: '#0D9488', // Primary ocean teal
+          600: '#0F766E',
+          700: '#115E59',
+          800: '#134E4A',
+          900: '#163047', // Deep navy
+          950: '#0B1E2E',
+        },
+        sky: {
+          50: '#F0F9FF',
+          100: '#E0F2FE',
+          200: '#BAE6FD',
+          300: '#7DD3FC',
+          400: '#38BDF8', // Secondary sky blue
+          500: '#0EA5E9',
+          600: '#0284C7',
+          700: '#0369A1',
+        },
+        mint: {
+          50: '#F2FDF8',
+          100: '#D1FAE5',
+          200: '#A7F3D0', // Accent fresh mint
+          300: '#6EE7B7',
+          400: '#34D399',
+          500: '#10B981',
           600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
         },
-        accent: {
-          blue: '#3b82f6',
-          indigo: '#6366f1',
-          purple: '#8b5cf6',
-          coral: '#f43f5e',
-          amber: '#f59e0b',
-          charcoal: '#0f172a'
+        navy: {
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          500: '#64748B',
+          700: '#334155',
+          800: '#1E293B',
+          900: '#163047', // Deep navy main text
+          950: '#0E1F2E',
         },
-        slate: {
-          850: '#151f33',
-          900: '#0b1120',
-          950: '#060a12',
-        }
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'glow-brand': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
-        'glow-accent': '0 0 25px -5px rgba(59, 130, 246, 0.4)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.25)',
-        'glass-hover': '0 16px 40px 0 rgba(0, 0, 0, 0.35)',
+        'card': '0 2px 10px -2px rgba(22, 48, 71, 0.05), 0 1px 3px 0 rgba(22, 48, 71, 0.04)',
+        'card-hover': '0 12px 28px -6px rgba(13, 148, 136, 0.14), 0 4px 12px -2px rgba(22, 48, 71, 0.06)',
+        'teal-sm': '0 2px 8px -1px rgba(13, 148, 136, 0.25)',
+        'teal': '0 4px 14px -1px rgba(13, 148, 136, 0.35)',
       },
       animation: {
-        'float': 'float 4s ease-in-out infinite',
-        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear infinite',
+        'shimmer': 'shimmer 1.8s linear infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-6px)' },
-        },
-        pulseSubtle: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.75' },
-        },
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },

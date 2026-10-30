@@ -104,18 +104,18 @@ const Home: React.FC = () => {
   return (
     <div className="w-full space-y-24 pb-24 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-8 pb-20">
         {/* Ambient Hero Glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-brand-500/20 via-emerald-600/10 to-sky-500/20 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-brand-500/10 via-sky-400/10 to-brand-200/20 blur-[130px] rounded-full pointer-events-none" />
 
         {/* Hero Background Texture */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.pexels.com/photos/2444403/pexels-photo-2444403.jpeg"
             alt="Scenic Travel in India"
-            className="w-full h-full object-cover opacity-20 filter saturate-150"
+            className="w-full h-full object-cover opacity-15 filter saturate-120"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/90 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/50 via-[#F8FAFC]/85 to-[#F8FAFC]" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
@@ -124,9 +124,9 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-brand-500/30 text-brand-300 text-xs sm:text-sm font-semibold shadow-glow-brand backdrop-blur-xl"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-brand-200 text-brand-700 text-xs sm:text-sm font-semibold shadow-sm backdrop-blur-xl"
           >
-            <Sparkles size={16} className="text-brand-400" />
+            <Sparkles size={16} className="text-brand-500" />
             <span>AI-Driven Match Engine & Itinerary Architect</span>
           </motion.div>
 
@@ -135,10 +135,10 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1]"
+            className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#163047] tracking-tight leading-[1.1]"
           >
             Don't just find a destination.<br />
-            <span className="bg-gradient-to-r from-brand-300 via-emerald-400 to-teal-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-600 via-brand-500 to-sky-500 bg-clip-text text-transparent">
               Discover the right trip.
             </span>
           </motion.h1>
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed"
+            className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed"
           >
             Stop browsing generic listicles. TripMeta scores destinations against your exact group dynamics, real budget limits, and seasonal weather with mathematical precision.
           </motion.p>
@@ -162,7 +162,7 @@ const Home: React.FC = () => {
           >
             <button
               onClick={() => navigate('/plan')}
-              className="glass-button-primary flex items-center justify-center gap-3 text-base !py-4 !px-8 w-full sm:w-auto"
+              className="glass-button-primary flex items-center justify-center gap-3 text-base !py-4 !px-8 w-full sm:w-auto shadow-teal"
             >
               <Sparkles size={20} />
               <span>Match My Ideal Trip</span>
@@ -186,18 +186,18 @@ const Home: React.FC = () => {
           >
             <form
               onSubmit={handleQuickMatch}
-              className="glass-card p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-4 gap-4 items-center text-left"
+              className="glass-card p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-4 gap-4 items-center text-left bg-white shadow-card border border-slate-200"
             >
               {/* Duration Field */}
-              <div className="space-y-1 sm:border-r border-slate-700/60 sm:pr-4">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Clock size={14} className="text-brand-400" />
+              <div className="space-y-1 sm:border-r border-slate-200 sm:pr-4">
+                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Clock size={14} className="text-brand-500" />
                   Duration
                 </label>
                 <select
                   value={quickDuration}
                   onChange={(e) => setQuickDuration(Number(e.target.value))}
-                  className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 text-[#163047] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
                 >
                   <option value={2}>Weekend (2 Days)</option>
                   <option value={4}>Getaway (4 Days)</option>
@@ -207,15 +207,15 @@ const Home: React.FC = () => {
               </div>
 
               {/* Group Type Field */}
-              <div className="space-y-1 sm:border-r border-slate-700/60 sm:pr-4">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Users size={14} className="text-brand-400" />
+              <div className="space-y-1 sm:border-r border-slate-200 sm:pr-4">
+                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Users size={14} className="text-brand-500" />
                   Travel Crew
                 </label>
                 <select
                   value={quickTravellerType}
                   onChange={(e) => setQuickTravellerType(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 text-[#163047] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
                 >
                   <option value="Solo">Solo Traveler</option>
                   <option value="Couple">Couple / Duo</option>
@@ -226,15 +226,15 @@ const Home: React.FC = () => {
               </div>
 
               {/* Budget Field */}
-              <div className="space-y-1 sm:border-r border-slate-700/60 sm:pr-4">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Wallet size={14} className="text-brand-400" />
+              <div className="space-y-1 sm:border-r border-slate-200 sm:pr-4">
+                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Wallet size={14} className="text-brand-500" />
                   Max Budget
                 </label>
                 <select
                   value={quickBudget}
                   onChange={(e) => setQuickBudget(Number(e.target.value))}
-                  className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 text-[#163047] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 font-medium"
                 >
                   <option value={10000}>Budget (Up to ₹10k)</option>
                   <option value={25000}>Standard (Up to ₹25k)</option>
@@ -261,23 +261,23 @@ const Home: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-slate-800/80"
+            className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-slate-200"
           >
             <div>
-              <p className="text-2xl sm:text-3xl font-black text-brand-400">100%</p>
-              <p className="text-xs text-slate-400 font-medium">Personalized Matches</p>
+              <p className="text-2xl sm:text-3xl font-black text-brand-600">100%</p>
+              <p className="text-xs text-slate-500 font-medium">Personalized Matches</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-black text-brand-400">10+</p>
-              <p className="text-xs text-slate-400 font-medium">Indian Top Destinations</p>
+              <p className="text-2xl sm:text-3xl font-black text-brand-600">35+</p>
+              <p className="text-xs text-slate-500 font-medium">Indian Top Destinations</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-black text-brand-400">TF-IDF</p>
-              <p className="text-xs text-slate-400 font-medium">Cosine ML Scoring</p>
+              <p className="text-2xl sm:text-3xl font-black text-brand-600">TF-IDF</p>
+              <p className="text-xs text-slate-500 font-medium">Cosine ML Scoring</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-black text-brand-400">SQLite</p>
-              <p className="text-xs text-slate-400 font-medium">Live Persistence</p>
+              <p className="text-2xl sm:text-3xl font-black text-brand-600">SQLite</p>
+              <p className="text-xs text-slate-500 font-medium">Live Persistence</p>
             </div>
           </motion.div>
         </div>
@@ -288,16 +288,16 @@ const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <span className="badge-emerald mb-3">Vibe Explorer</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#163047] tracking-tight">
               Curated Travel Moods
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base mt-1">
+            <p className="text-slate-500 text-sm sm:text-base mt-1">
               Select your preferred vibe to filter our curated intelligence repository.
             </p>
           </div>
           <Link
             to="/explore"
-            className="text-sm font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1.5 transition-colors"
+            className="text-sm font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1.5 transition-colors"
           >
             <span>Browse all categories</span>
             <ArrowRight size={16} />
@@ -311,19 +311,19 @@ const Home: React.FC = () => {
               <Link
                 key={mood.name}
                 to={`/explore?category=${mood.query}`}
-                className="group relative h-48 sm:h-60 rounded-2xl overflow-hidden glass-card-hover border border-white/10 shadow-lg"
+                className="group relative h-48 sm:h-60 rounded-2xl overflow-hidden glass-card-hover border border-slate-200 shadow-sm"
               >
                 <img
                   src={mood.image}
                   alt={mood.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#163047]/90 via-[#163047]/30 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-base font-bold text-white group-hover:text-brand-300 transition-colors">
+                  <h3 className="text-base font-bold text-white group-hover:text-brand-200 transition-colors">
                     {mood.name}
                   </h3>
-                  <p className="text-[11px] font-medium text-slate-300">
+                  <p className="text-[11px] font-medium text-slate-200">
                     {count > 0 ? `${count} places` : 'Explore'}
                   </p>
                 </div>
@@ -338,10 +338,10 @@ const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <span className="badge-accent mb-3">Highly Rated</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#163047] tracking-tight">
               Top Rated Highlights
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base mt-1">
+            <p className="text-slate-500 text-sm sm:text-base mt-1">
               Traveler-adored spots with proven reviews and stellar ratings.
             </p>
           </div>
@@ -369,7 +369,7 @@ const Home: React.FC = () => {
                 <div
                   key={dest.id}
                   onClick={() => navigate(`/destination/${dest.id}`)}
-                  className="group glass-card-hover rounded-2xl overflow-hidden flex flex-col cursor-pointer"
+                  className="group glass-card-hover rounded-2xl overflow-hidden flex flex-col cursor-pointer bg-white border border-slate-200 shadow-card"
                 >
                   {/* Image Container */}
                   <div className="relative h-52 overflow-hidden">
@@ -378,11 +378,11 @@ const Home: React.FC = () => {
                       alt={dest.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#163047]/70 via-transparent to-black/10" />
 
                     {/* Rating Badge */}
-                    <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-amber-300 flex items-center gap-1 border border-white/10 shadow-sm">
-                      <Star size={13} className="fill-amber-400 text-amber-400" />
+                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-amber-700 flex items-center gap-1 border border-slate-200 shadow-sm">
+                      <Star size={13} className="fill-amber-500 text-amber-500" />
                       <span>{dest.rating.toFixed(1)}</span>
                     </div>
 
@@ -390,17 +390,17 @@ const Home: React.FC = () => {
                     <button
                       onClick={(e) => handleToggleBookmark(dest, e)}
                       aria-label="Save destination"
-                      className="absolute top-3 right-3 w-9 h-9 rounded-xl bg-slate-950/80 backdrop-blur-md flex items-center justify-center border border-white/10 text-white hover:scale-110 active:scale-95 transition-all shadow-md"
+                      className="absolute top-3 right-3 w-9 h-9 rounded-xl bg-white/95 backdrop-blur-md flex items-center justify-center border border-slate-200 text-slate-700 hover:scale-110 active:scale-95 transition-all shadow-sm"
                     >
                       <Heart
                         size={17}
-                        className={isSaved ? 'fill-red-500 text-red-500' : 'text-slate-300'}
+                        className={isSaved ? 'fill-red-500 text-red-500' : 'text-slate-400'}
                       />
                     </button>
 
                     {/* State Tag */}
-                    <div className="absolute bottom-3 left-3 text-xs text-slate-200 font-medium flex items-center gap-1 drop-shadow-md">
-                      <MapPin size={13} className="text-brand-400" />
+                    <div className="absolute bottom-3 left-3 text-xs text-white font-medium flex items-center gap-1 drop-shadow-md">
+                      <MapPin size={13} className="text-brand-300" />
                       <span>{dest.state}</span>
                     </div>
                   </div>
@@ -408,24 +408,24 @@ const Home: React.FC = () => {
                   {/* Body Content */}
                   <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
                     <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-brand-300 transition-colors">
+                      <h3 className="text-lg font-bold text-[#163047] group-hover:text-brand-600 transition-colors">
                         {dest.name}
                       </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2 mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed">
                         {dest.description}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">Est. Budget</span>
-                        <span className="font-semibold text-slate-200">
+                        <span className="font-semibold text-[#163047]">
                           ₹{dest.estimated_budget_min.toLocaleString('en-IN')} - ₹{dest.estimated_budget_max.toLocaleString('en-IN')}
                         </span>
                       </div>
                       <div className="text-right">
                         <span className="text-slate-400 block text-[10px] uppercase font-bold">Duration</span>
-                        <span className="font-semibold text-brand-400">
+                        <span className="font-semibold text-brand-600">
                           {dest.recommended_duration_min}-{dest.recommended_duration_max} Days
                         </span>
                       </div>
@@ -440,44 +440,44 @@ const Home: React.FC = () => {
 
       {/* Feature Showcase: Why TripMeta */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-card p-8 sm:p-12 relative overflow-hidden border border-brand-500/20">
+        <div className="glass-card p-8 sm:p-12 relative overflow-hidden border border-brand-200 bg-gradient-to-br from-white via-white to-brand-50/50 shadow-card">
           <div className="max-w-3xl space-y-4 relative z-10">
             <span className="badge-emerald">Architecture Innovation</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#163047] tracking-tight">
               Built for travelers who value time and precision.
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed">
+            <p className="text-slate-600 text-base leading-relaxed">
               Standard booking engines show you where you *can* go. TripMeta calculates where you *should* go, utilizing vector cosine similarity over rich destination parameters.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-6 mt-10 relative z-10">
-            <div className="bg-slate-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 border border-brand-100 flex items-center justify-center">
                 <TrendingUp size={20} />
               </div>
-              <h3 className="text-base font-bold text-white">TF-IDF Vector Matching</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-[#163047]">TF-IDF Vector Matching</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Matches your specific activity interests and travel style against deep semantic features rather than shallow tags.
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 border border-sky-100 flex items-center justify-center">
                 <ShieldCheck size={20} />
               </div>
-              <h3 className="text-base font-bold text-white">Budget Penalization Rules</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-[#163047]">Budget Penalization Rules</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Hard filters combined with soft score penalties prevent unrealistic itinerary proposals outside your budget range.
               </p>
             </div>
 
-            <div className="bg-slate-900/80 p-6 rounded-2xl border border-white/5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 border border-teal-100 flex items-center justify-center">
                 <Calendar size={20} />
               </div>
-              <h3 className="text-base font-bold text-white">Seasonal Weather Awareness</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-[#163047]">Seasonal Weather Awareness</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Considers the current calendar month to prioritize hill stations in summer and coastal paradises in winter.
               </p>
             </div>
